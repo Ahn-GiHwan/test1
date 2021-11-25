@@ -1,18 +1,18 @@
-const CopyPlugin = require("copy-webpack-plugin");
-const HtmlWebpackPlugin = require("html-webpack-plugin");
-const MiniCssExtractPlugin = require("mini-css-extract-plugin");
-const ReactRefreshWebpackPlugin = require("@pmmmwh/react-refresh-webpack-plugin");
-const webpack = require("webpack");
+const CopyPlugin = require('copy-webpack-plugin')
+const HtmlWebpackPlugin = require('html-webpack-plugin')
+const MiniCssExtractPlugin = require('mini-css-extract-plugin')
+const ReactRefreshWebpackPlugin = require('@pmmmwh/react-refresh-webpack-plugin')
+const webpack = require('webpack')
 
 module.exports = (env, option) => {
   return {
-    entry: "./src/main.js",
+    entry: './src/main.js',
     output: {
-      filename: "main.js",
-      clean: true,
+      filename: 'main.js',
+      clean: true
     },
     resolve: {
-      extensions: [".js", ".jsx"],
+      extensions: ['.js', '.jsx']
     },
     module: {
       rules: [
@@ -20,47 +20,47 @@ module.exports = (env, option) => {
           test: /\.jsx?$/i,
           exclude: /node_modules/,
           use: {
-            loader: "babel-loader",
+            loader: 'babel-loader',
             options: {
-              presets: ["@babel/preset-env", "@babel/preset-react"],
-              plugins: [["@babel/plugin-transform-runtime", { corejs: 3 }]],
-            },
-          },
+              presets: ['@babel/preset-env', '@babel/preset-react'],
+              plugins: [['@babel/plugin-transform-runtime', { corejs: 3 }]]
+            }
+          }
         },
         {
           test: /\.s?css/,
           use: [
             MiniCssExtractPlugin.loader,
-            "css-loader",
+            'css-loader',
             {
-              loader: "postcss-loader",
+              loader: 'postcss-loader',
               options: {
                 postcssOptions: {
-                  plugins: [["autoprefixer"]],
-                },
-              },
+                  plugins: [['autoprefixer']]
+                }
+              }
             },
-            "sass-loader",
-          ],
-        },
-      ],
+            'sass-loader'
+          ]
+        }
+      ]
     },
     plugins: [
       new HtmlWebpackPlugin({
-        template: "./index.html",
+        template: './index.html'
       }),
       new MiniCssExtractPlugin({
-        filename: "style.css",
+        filename: 'style.css'
       }),
       new CopyPlugin({
-        patterns: [{ from: "static" }],
+        patterns: [{ from: 'static' }]
       }),
       new ReactRefreshWebpackPlugin({
         overlay: {
-          useURLPolyfill: true,
-        },
+          useURLPolyfill: true
+        }
       }),
-      new webpack.HotModuleReplacementPlugin(),
-    ],
-  };
-};
+      new webpack.HotModuleReplacementPlugin()
+    ]
+  }
+}
