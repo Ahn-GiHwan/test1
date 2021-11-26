@@ -3,7 +3,8 @@ import React from 'react';
 const Home = () => {
   return (
     <div>
-      <h1>면접대비 서비스</h1>
+      <h1>면접 도우미</h1>
+      
     </div>
   );
 };

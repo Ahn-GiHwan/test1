@@ -1,12 +1,14 @@
 import React from 'react'
-import Home from './Home'
+import { Button } from 'reactstrap'
 
 const App = () => {
   return (
-    <div>
-      <Home />
+    <div className="container">
+      <div>
+        <Button color="primary">App</Button>
+      </div>
     </div>
-  )  
+  )
 }
 
 export default App
