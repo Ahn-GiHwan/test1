@@ -1,15 +1,21 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
 
-import App from './App'
+import Router from './routes/Router'
 
+import { Provider } from 'react-redux'
+import store from './store/configueStore'
+
+import 'bootstrap/dist/css/bootstrap.min.css'
 import './scss/test.scss'
 
 const rootEl = document.getElementById('root')
 
 ReactDOM.render(
   <React.StrictMode>
-    <App />
+    <Provider store={store}>
+      <Router />
+    </Provider>
   </React.StrictMode>,
   rootEl
 )
