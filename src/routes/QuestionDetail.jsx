@@ -1,5 +1,5 @@
 import React from 'react'
-import { useParams } from 'react-router'
+import { useParams, useNavigate } from 'react-router'
 import { useSelector } from 'react-redux'
 import {
   Card,
@@ -15,6 +15,7 @@ import {
 
 const QuestionDetail = () => {
   const { id } = useParams()
+  const navigate = useNavigate()
   const currentQuestionAndAnswers = useSelector(
     state => state.testResultReducer.currentQuestionAndAnswers
   )
@@ -22,6 +23,14 @@ const QuestionDetail = () => {
   const selectedQNA = currentQuestionAndAnswers.filter(
     qna => qna.id === Number(id)
   )[0]
+
+  const goBack = () => {
+    navigate(-1)
+  }
+
+  const goHome = () => {
+    navigate('/')
+  }
 
   return (
     <>
@@ -67,8 +76,11 @@ const QuestionDetail = () => {
                   bottom: '15px'
                 }}
               >
-                <Button color="primary">뒤로가기</Button>
-                <Button>홈</Button>
+                <Button onClick={goBack} color="primary">
+                  뒤로가기
+                </Button>
+                <Button onClick={goHome}>홈</Button>
+                {/* 신고하기 버튼 */}
               </ButtonGroup>
             </CardBody>
           </Card>
