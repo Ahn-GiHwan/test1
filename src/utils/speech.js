@@ -16,9 +16,11 @@ export const speech = (txt, func) => {
   }
   var lang = 'ko-KR'
   var utterThis = new SpeechSynthesisUtterance(txt)
-  utterThis.onend = event => {
+  utterThis.onend = () => {
     // tts가 끝나면
-    func()
+    setTimeout(() => {
+      func()
+    }, 1000)
   }
   utterThis.onerror = function (event) {
     console.log('error', event)
