@@ -19,14 +19,14 @@ const ResultCheck = () => {
   return (
     <>
       <Container fluid>
-        <ListGroup>
-          <ListGroupItem active disabled>
+        <ListGroup style={{ marginBottom: 15 }}>
+          <ListGroupItem color="primary">
             <Row>
               <Col>
                 <div>문제 보기</div>
               </Col>
               <Col>
-                <div>복습 목록 추가</div>
+                <div style={{ textAlign: 'right' }}>복습 목록 추가</div>
               </Col>
             </Row>
           </ListGroupItem>
@@ -38,7 +38,9 @@ const ResultCheck = () => {
             )
           })}
         </ListGroup>
-        <Button variant="primary">복습 목록에 추가하기</Button>
+        <Button color="primary" style={{ position: 'absolute', right: 10 }}>
+          복습 목록에 추가하기
+        </Button>
       </Container>
     </>
   )

@@ -23,11 +23,21 @@ const QuestionView = ({ qna }) => {
   return (
     <>
       <Row>
-        <Col>
-          <div onClick={checkLoggedOut}>{qna.question}</div>
+        <Col xs={10}>
+          <div
+            onClick={checkLoggedOut}
+            style={{
+              cursor: 'pointer',
+              whiteSpace: 'nowrap',
+              textOverflow: 'ellipsis',
+              overflow: 'hidden'
+            }}
+          >
+            {qna.question ? qna.question : '질문이 비어있습니다.'}
+          </div>
         </Col>
-        <Col>
-          <input type="checkbox" name="" id="" />
+        <Col xs={2} style={{ textAlign: 'right' }}>
+          <input type="checkbox" name="" id="" style={{ cursor: 'pointer' }} />
         </Col>
       </Row>
     </>
