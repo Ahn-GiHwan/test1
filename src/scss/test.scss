@@ -1,3 +1,13 @@
-.container {
-  display: flex;
+@import './constants/colors';
+
+* {
+  font-family: 'Spoqa Han Sans Neo', 'Spoqa Han Sans JP', sans-serif;
+}
+
+body {
+  width: 100vw;
+  height: 100vh;
+  min-width: 500px;
+  overflow: hidden;
+  background-color: #fafafa !important;
 }
