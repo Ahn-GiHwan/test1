@@ -1,5 +1,5 @@
 import React from 'react'
-import { Alert, Card, CardBody, CardSubtitle } from 'reactstrap'
+import { Card, CardBody, CardSubtitle } from 'reactstrap'
 
 const InterviewSubTitle = ({ subTitle, notice, ATime }) => {
   return (
@@ -9,7 +9,6 @@ const InterviewSubTitle = ({ subTitle, notice, ATime }) => {
           <CardSubtitle>{subTitle}</CardSubtitle>
         </CardBody>
       </Card>
-      {ATime > 0 && <Alert color="warning">❗️{ATime}초 남았습니다</Alert>}
       {notice && notice}
     </>
   )

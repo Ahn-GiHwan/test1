@@ -2,7 +2,7 @@ import React, { useEffect, useRef, useState } from 'react'
 import { useDispatch } from 'react-redux'
 import { useParams } from 'react-router'
 import { useNavigate } from 'react-router-dom'
-import { Alert, Input, Label } from 'reactstrap'
+import { Alert } from 'reactstrap'
 import Swal from 'sweetalert2'
 import InterviewTemplate from '../components/Interview/InterviewTemplate'
 import TheButton from '../components/TheButton'
@@ -132,8 +132,7 @@ const Page345Compo = () => {
       title: '대답해 주세요 😃',
       subTitle: (
         <>
-          <Label for="exampleText">정답지</Label>
-          <Input id="exampleText" name="text" type="textarea" innerRef={ref} />
+          {ATime}
           <TheButton
             text="문제 오류 신고"
             type="report"
