@@ -40,7 +40,7 @@ const QuestionView = ({ qna }) => {
               overflow: 'hidden'
             }}
           >
-            {qna.question ? qna.question : '질문이 비어있습니다.'}
+            {qna.question || '질문이 비어있습니다.'}
           </div>
         </Col>
         <Col xs={2} style={{ textAlign: 'right' }}>
