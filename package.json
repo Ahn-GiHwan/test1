@@ -20,6 +20,8 @@
   "homepage": "https://github.com/Ahn-GiHwan/test1#readme",
   "dependencies": {
     "axios": "^0.24.0",
+    "bootstrap": "^5.1.3",
+    "boxicons": "^2.0.9",
     "dayjs": "^1.10.7",
     "prop-types": "^15.7.2",
     "react": "^17.0.2",
