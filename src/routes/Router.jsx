@@ -1,16 +1,17 @@
 import React from 'react'
 import { BrowserRouter, Routes, Route, NavLink, Link } from 'react-router-dom'
+
 import Home from './Home'
 import AddQuestion from './AddQuestion'
 import Categories from './Categories'
 import Category from './Category'
 import ResultCheck from './ResultCheck'
 import QuestionDetail from './QuestionDetail'
+import Interview from './Interview'
 
 const Router = () => {
   return (
     <BrowserRouter>
-      <NavLink to="/App">App으로 이동</NavLink>
       <Link to="/categories" component={<Categories />}>
         테스트하기
       </Link>
@@ -20,7 +21,7 @@ const Router = () => {
         <Route path="/AddQuestion" element={<AddQuestion />} />
         <Route path="/categories" element={<Categories />} />
         <Route path="/categories/:id" element={<Category />} />
-        <Route path="/App" element={<App />} />
+        <Route path="/interview" element={<Interview />} />
         <Route path="/result" element={<ResultCheck />} />
         <Route path="/detail/:id" element={<QuestionDetail />} />
       </Routes>
