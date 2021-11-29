@@ -65,6 +65,17 @@ const Categories = props => {
 
   const toggleInputForm = () => setMode(!mode)
 
+  const careerTags = fetchCareerTagData.map((tag, idx) => (
+    <Button
+      key={idx}
+      color={tag.color}
+      className="career-card"
+      onClick={e => selectTag(e.target.textContent)}
+    >
+      {tag.title}
+    </Button>
+  ))
+
   return (
     <div>
       <Container>
@@ -89,18 +100,7 @@ const Categories = props => {
         </Row>
         <section>
           <span className="main-section_title">Career</span>
-          <div className="career-wrapper">
-            {fetchCareerTagData.map((tag, idx) => (
-              <Button
-                key={idx}
-                color={tag.color}
-                className="career-card"
-                onClick={e => selectTag(e.target.textContent)}
-              >
-                {tag.title}
-              </Button>
-            ))}
-          </div>
+          <div className="career-wrapper">{careerTags}</div>
         </section>
         <Row>
           <span className="main-section_title">Category</span>
