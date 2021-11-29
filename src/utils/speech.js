@@ -14,8 +14,8 @@ export const speech = (txt, func) => {
     )
     return
   }
-  var lang = 'ko-KR'
-  var utterThis = new SpeechSynthesisUtterance(txt)
+  const lang = 'ko-KR'
+  const utterThis = new SpeechSynthesisUtterance(txt)
   utterThis.onend = () => {
     // tts가 끝나면
     setTimeout(() => {
@@ -25,8 +25,8 @@ export const speech = (txt, func) => {
   utterThis.onerror = function (event) {
     console.log('error', event)
   }
-  var voiceFound = false
-  for (var i = 0; i < voices.length; i++) {
+  let voiceFound = false
+  for (let i = 0; i < voices.length; i++) {
     if (
       voices[i].lang.indexOf(lang) >= 0 ||
       voices[i].lang.indexOf(lang.replace('-', '_')) >= 0
