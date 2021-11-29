@@ -5,14 +5,19 @@ import '../scss/components/Categories.scss'
 import CategoryCard from '../components/CategoryCard'
 import SearchButton from '../components/SearchButton'
 import ProfileDetail from '../components/ProfileDetail'
+import { useSelector } from 'react-redux'
 
 const Categories = props => {
-  // 초기 데이터
-  const [initialData, setInitialData] = useState([])
+  // category data
+  const fetchCategoryData = useSelector(
+    state => state.categoryReducer.categories
+  )
   // 가변 데이터
   const [data, setData] = useState([])
-  // 커리어 데이터
-  const [career, setCareer] = useState([])
+
+  // tag data
+  const fetchCareerTagData = useSelector(state => state.careerTagReducer.tags)
+
   // 검색어
   const [query, setQuery] = useState('')
   // search form on/off
@@ -20,55 +25,7 @@ const Categories = props => {
 
   // api에서 데이터 가져오기
   useEffect(() => {
-    const fetchData = [
-      {
-        id: 1,
-        title: '복습하기',
-        count: 23,
-        career: ['All', 'Front-End', 'Back-End']
-      },
-      {
-        id: 2,
-        title: '네트워크',
-        count: 23,
-        career: ['All', 'Front-End', 'Back-End']
-      },
-      {
-        id: 3,
-        title: 'React',
-        count: 23,
-        career: ['All', 'Front-End']
-      },
-      {
-        id: 4,
-        title: '공통 질문',
-        count: 23,
-        career: ['All', 'Front-End', 'Back-End']
-      },
-      {
-        id: 5,
-        title: 'JavaScript',
-        count: 23,
-        career: ['All', 'Front-End']
-      },
-      {
-        id: 6,
-        title: 'Node Express',
-        count: 23,
-        career: ['All', 'Back-End']
-      }
-    ]
-    setData(fetchData)
-    setInitialData(fetchData)
-  }, [])
-
-  useEffect(() => {
-    const fetchCareer = [
-      { title: 'All', color: 'primary' },
-      { title: 'Front-End', color: 'warning' },
-      { title: 'Back-End', color: 'success' }
-    ]
-    setCareer(fetchCareer)
+    setData(fetchCategoryData)
   }, [])
 
   // 카테고리 카드 생성 -> 컴포넌트로 나눌까 생각중
@@ -85,7 +42,7 @@ const Categories = props => {
 
   // 초기 fetchData 불러오기
   const reset = () => {
-    setData(initialData)
+    setData(fetchCategoryData)
   }
 
   const onKeyUp = e => {
@@ -94,17 +51,19 @@ const Categories = props => {
     if (!e.target.value.length) reset()
     // enter 입력 시, 해당 카테고리 보여주기
     if (e.keyCode === enter) {
-      const filters = [...data].filter(
+      const filters = [...fetchCategoryData].filter(
         el => el.title.toUpperCase() === query.toUpperCase().trim()
       )
       setData(filters)
     }
   }
 
-  const selectCareer = text => {
-    const career = [...initialData].filter(el => el.career.includes(text))
-    setData(career)
+  const selectTag = text => {
+    const tags = [...fetchCategoryData].filter(tag => tag.tag.includes(text))
+    setData(tags)
   }
+
+  const toggleInputForm = () => setMode(!mode)
 
   return (
     <div>
@@ -115,7 +74,7 @@ const Categories = props => {
           </Col>
           {mode ? (
             <Col xs={6}>
-              <SearchButton onClick={() => setMode(!mode)} />
+              <SearchButton onClick={toggleInputForm} />
             </Col>
           ) : (
             <>
@@ -123,7 +82,7 @@ const Categories = props => {
                 <Input onKeyUp={onKeyUp} onChange={onChange} value={query} />
               </Col>
               <Col xs={2}>
-                <SearchButton onClick={() => setMode(!mode)} />
+                <SearchButton onClick={toggleInputForm} />
               </Col>
             </>
           )}
@@ -131,14 +90,14 @@ const Categories = props => {
         <section>
           <span className="main-section_title">Career</span>
           <div className="career-wrapper">
-            {career.map((card, idx) => (
+            {fetchCareerTagData.map((tag, idx) => (
               <Button
                 key={idx}
-                color={card.color}
+                color={tag.color}
                 className="career-card"
-                onClick={e => selectCareer(e.target.textContent)}
+                onClick={e => selectTag(e.target.textContent)}
               >
-                {card.title}
+                {tag.title}
               </Button>
             ))}
           </div>
