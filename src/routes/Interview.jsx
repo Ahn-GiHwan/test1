@@ -8,12 +8,14 @@ import InterviewTemplate from '../components/Interview/InterviewTemplate'
 import TheButton from '../components/TheButton'
 import speech from '../utils/speech'
 
-const Page345Compo = () => {
+const Interview = () => {
   const [QTimer, setQTimer] = useState(false)
   const [ATimer, setATimer] = useState(false)
 
   const [QTime, setQTime] = useState(10)
   const [ATime, setATime] = useState(11)
+
+  const [mode, setMode] = useState('ready')
 
   const navigate = useNavigate()
   // const dispatch = useDispatch()
@@ -25,6 +27,7 @@ const Page345Compo = () => {
   }
 
   useEffect(() => {
+    setMode('ready')
     // dispatch를 통해 알맞은 문제가져오기
     // dispatch(getQestion(id))
   }, [])
@@ -35,6 +38,7 @@ const Page345Compo = () => {
       setQTimer(false)
       setATimer(true)
       setATime(ATime => ATime - 1)
+      setMode('answer')
     } else {
       setTimeout(() => {
         setQTime(QTime => QTime - 1)
@@ -57,7 +61,10 @@ const Page345Compo = () => {
   const clickEvents = {
     startBtnClick: () => {
       setQTimer(true)
-      speech(exQuestion.title, () => setQTime(QTime => QTime - 1))
+      setMode('question')
+      speech(exQuestion.title, () => {
+        setQTime(QTime => QTime - 1)
+      })
     },
     reportClick: QData => {
       Swal.fire({
@@ -144,21 +151,29 @@ const Page345Compo = () => {
 
   const { ready, question, answer } = interviewTemplateProps
 
-  if (!QTimer && ATimer) {
-    return <InterviewTemplate title={answer.title} subTitle={answer.subTitle} />
-  } else if (QTimer && !ATimer) {
-    return (
-      <InterviewTemplate title={question.title} subTitle={question.subTitle} />
-    )
-  } else if (!QTimer) {
-    return (
-      <InterviewTemplate
-        title={ready.title}
-        subTitle={ready.subTitle}
-        notice={ready.notice}
-      />
-    )
+  switch (mode) {
+    case 'ready':
+      return (
+        <InterviewTemplate
+          title={ready.title}
+          subTitle={ready.subTitle}
+          notice={ready.notice}
+        />
+      )
+    case 'question':
+      return (
+        <InterviewTemplate
+          title={question.title}
+          subTitle={question.subTitle}
+        />
+      )
+    case 'answer':
+      return (
+        <InterviewTemplate title={answer.title} subTitle={answer.subTitle} />
+      )
+    default:
+      return Swal.fire({ title: '잘못된 접근입니다. ', icon: 'error' })
   }
 }
 
-export default Page345Compo
+export default Interview
