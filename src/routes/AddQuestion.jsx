@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Form, FormGroup, Label, Input, Button } from 'reactstrap'
+import { Form, FormGroup, Label, Input, Button} from 'reactstrap'
 
 const AddQuestion = () => {
 
@@ -10,19 +10,19 @@ const AddQuestion = () => {
     e.preventDefault()
     console.log(`질문: ${question} 답변: ${answer}`)
   }
-
+  
   return (
-    <div>
+    <div style={{width: 335}}>
       <Form onSubmit={handleSubmit}>
         <FormGroup>
           <Label for="question">질문: </Label>
-          <Input required placeholder="면접 질문을 입력해주세요." id="question" type="text" onChange={(e) => setQuestion(e.target.value)} />
+          <Input className="input-q" required placeholder="면접 질문을 입력해주세요." id="question" type="text" onBlur={(e) => setQuestion(e.target.value)} />
         </FormGroup>
-        <FormGroup>
-          <Label for="answer">답변: </Label>
-          <Input required placeholder="질문에 대한 답변을 입력해주세요." id="answer" type="textarea" onChange={(e) => setAnswer(e.target.value)} />
+        <FormGroup >
+          <Label for="answer">답변:</Label>
+          <Input className="input-a" required placeholder="질문에 대한 답변을 입력해주세요." id="answer" type="textarea" onBlur={(e) => setAnswer(e.target.value)} />          
         </FormGroup>
-        <Button>등록</Button>
+        <Button className="submit-btn">등록</Button>
       </Form>
     </div>
   );
