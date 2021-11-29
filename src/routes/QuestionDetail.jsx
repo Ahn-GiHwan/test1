@@ -47,9 +47,7 @@ const QuestionDetail = () => {
                   textOverflow: 'ellipsis'
                 }}
               >
-                {selectedQNA.question
-                  ? selectedQNA.question
-                  : '질문이 비어있습니다.'}
+                {selectedQNA.question || '질문이 비어있습니다.'}
               </CardTitle>
               <CardSubtitle
                 className="mb-2 text-muted"
@@ -64,9 +62,7 @@ const QuestionDetail = () => {
                   overflow: 'auto'
                 }}
               >
-                {selectedQNA.answer
-                  ? selectedQNA.answer
-                  : '답안이 비어있습니다.'}
+                {selectedQNA.answer || '답안이 비어있습니다.'}
               </CardText>
 
               <ButtonGroup
