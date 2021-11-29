@@ -1,14 +1,14 @@
 import React from 'react'
 import { BrowserRouter, Routes, Route, NavLink } from 'react-router-dom'
-
-import App from '../App'
+import Home from './Home'
+import AddQuestion from './AddQuestion'
 
 const Router = () => {
   return (
     <BrowserRouter>
-      <NavLink to="/App">App으로 이동</NavLink>
       <Routes>
-        <Route path="/App" element={<App />} />
+        <Route path="/" element={<Home title="면접 도우미" />} />
+        <Route path="/AddQuestion" element={<AddQuestion />} />
       </Routes>
     </BrowserRouter>
   )
