@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { useDispatch } from 'react-redux'
 import { useParams } from 'react-router'
 import { useNavigate } from 'react-router-dom'
@@ -18,7 +18,6 @@ const Page345Compo = () => {
   const navigate = useNavigate()
   // const dispatch = useDispatch()
   const { id } = useParams()
-  const ref = useRef(null)
 
   const exQuestion = {
     id: 0,
@@ -136,7 +135,7 @@ const Page345Compo = () => {
             text="문제 오류 신고"
             type="report"
             reportData={exQuestion}
-            clickFunc={clickEvents.reportClick}
+            clickFunc={() => clickEvents.reportClick(exQuestion)}
           />
         </>
       )
@@ -146,14 +145,10 @@ const Page345Compo = () => {
   const { ready, question, answer } = interviewTemplateProps
 
   if (!QTimer && ATimer) {
+    return <InterviewTemplate title={answer.title} subTitle={answer.subTitle} />
+  } else if (QTimer && !ATimer) {
     return (
-      <InterviewTemplate
-        title={answer.title}
-        subTitle={answer.subTitle}
-        ATime={ATime}
-        report={true}
-        interviewData={exQuestion}
-      />
+      <InterviewTemplate title={question.title} subTitle={question.subTitle} />
     )
   } else if (!QTimer) {
     return (
@@ -161,14 +156,6 @@ const Page345Compo = () => {
         title={ready.title}
         subTitle={ready.subTitle}
         notice={ready.notice}
-      />
-    )
-  } else if (QTimer && !ATimer) {
-    return (
-      <InterviewTemplate
-        title={question.title}
-        subTitle={question.subTitle}
-        interviewData={exQuestion}
       />
     )
   }

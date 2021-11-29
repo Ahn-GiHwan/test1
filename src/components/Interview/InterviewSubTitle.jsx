@@ -1,10 +1,10 @@
 import React from 'react'
 import { Card, CardBody, CardSubtitle } from 'reactstrap'
 
-const InterviewSubTitle = ({ subTitle, notice, ATime }) => {
+const InterviewSubTitle = ({ subTitle, notice }) => {
   return (
     <>
-      <Card style={{ visibility: subTitle === 11 ? 'hidden' : 'visible' }}>
+      <Card>
         <CardBody>
           <CardSubtitle>{subTitle}</CardSubtitle>
         </CardBody>
