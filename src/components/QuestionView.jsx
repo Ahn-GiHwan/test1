@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useCallback } from 'react'
 import PropTypes from 'prop-types'
 import { useNavigate } from 'react-router-dom'
 import Swal from 'sweetalert2'
@@ -23,9 +23,9 @@ const QuestionView = ({ qna }) => {
     })
   }
 
-  const checkLoggedOut = e => {
+  const checkLoggedOut = useCallback(() => {
     isLoggedOut ? sweetAlert() : goDetail()
-  }
+  }, [isLoggedOut])
 
   return (
     <>
