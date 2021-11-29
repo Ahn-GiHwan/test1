@@ -13,7 +13,14 @@ const QuestionView = ({ qna }) => {
   }
 
   const sweetAlert = () => {
-    Swal.fire({ title: '정답이 궁금하신가요?' })
+    Swal.fire({
+      title: '정답이 궁금하신가요?',
+      text: '회원이 되시면 확인하실 수 있습니다.',
+      confirmButtonColor: '#3085d6',
+      confirmButtonText: '회원가입',
+      confirmButtonClass: 'confirm-button',
+      footer: '<a href="/signin">이미 회원입니다</a>'
+    })
   }
 
   const checkLoggedOut = e => {
