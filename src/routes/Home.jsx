@@ -1,12 +1,12 @@
 import React from 'react';
-import LinkCompo from '../components/LinkCompo';
+import {Link} from 'react-router-dom'
 
 const Home = ({title}) => {
   return (
     <div className="wrap">
       <h1>{title}</h1>
-        <LinkCompo path='home' btnTitle="면접 연습하기"/>
-        <LinkCompo path='addQuestion' btnTitle="내 질문 등록하기"/>
+        <Link to='Home'>면접 연습하기</Link>
+        <Link to='AddQuestion'>내 질문 등록하기</Link>
     </div>
   );
 };
