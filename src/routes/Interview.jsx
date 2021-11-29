@@ -48,7 +48,6 @@ const Page345Compo = () => {
     if (ATime === 0) {
       //문제 푼 후 페이지 이동
       // navigate('/App')
-      alert(ref.current.value)
     } else {
       setTimeout(() => {
         setATime(ATime => ATime - 1)
