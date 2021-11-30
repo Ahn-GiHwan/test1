@@ -12,6 +12,10 @@ import {
   Row,
   Col
 } from 'reactstrap'
+import Swal from 'sweetalert2'
+
+import TheButton from '../components/TheButton'
+import report from '../utils/report'
 
 const QuestionDetail = () => {
   const { id } = useParams()
@@ -26,10 +30,6 @@ const QuestionDetail = () => {
 
   const goBack = () => {
     navigate(-1)
-  }
-
-  const goHome = () => {
-    navigate('/')
   }
 
   return (
@@ -75,8 +75,13 @@ const QuestionDetail = () => {
                 <Button onClick={goBack} color="primary">
                   뒤로가기
                 </Button>
-                <Button onClick={goHome}>홈</Button>
-                {/* 신고하기 버튼 */}
+                <TheButton
+                  style={{ position: 'relative', bottom: 0, right: 0 }}
+                  text="문제 오류 신고"
+                  type="report"
+                  reportData={selectedQNA.question}
+                  clickFunc={() => report(selectedQNA.question)}
+                />
               </ButtonGroup>
             </CardBody>
           </Card>
