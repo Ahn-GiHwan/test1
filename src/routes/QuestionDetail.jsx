@@ -80,7 +80,7 @@ const QuestionDetail = () => {
                   text="문제 오류 신고"
                   type="report"
                   reportData={selectedQNA.question}
-                  clickFunc={report(selectedQNA.question)}
+                  clickFunc={() => report(selectedQNA.question)}
                 />
               </ButtonGroup>
             </CardBody>
