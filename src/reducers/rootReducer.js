@@ -10,11 +10,6 @@ const rootReducer = combineReducers({
   categoryReducer,
   careerTagReducer,
   testResultReducer
-
-
-const rootReducer = combineReducers({
-  exampleReducer,
-  
 })
 
 export default rootReducer

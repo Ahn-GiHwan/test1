@@ -1,4 +1,7 @@
+// TODO categories에서 tag - {tagId:'', tagName: '', color:""} 넘겨서 props로 다시 넘겨서 그리기
+
 const initial = {
+  // title -> tagName
   tags: [
     { title: 'All', color: 'primary' },
     { title: 'Front-End', color: 'warning' },
