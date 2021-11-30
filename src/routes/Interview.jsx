@@ -26,6 +26,12 @@ const Interview = () => {
     title: 'react hook의 useEffect에 대해 설명하세요'
   }
 
+  const styles = {
+    position: 'fixed',
+    bottom: 20,
+    right: 20
+  }
+
   useEffect(() => {
     setMode('ready')
     // dispatch를 통해 알맞은 문제가져오기
@@ -82,6 +88,7 @@ const Interview = () => {
           text="시작"
           color="primary"
           clickFunc={clickEvents.startBtnClick}
+          style={styles}
         />
       ),
       notice: (
@@ -105,6 +112,7 @@ const Interview = () => {
             type="report"
             reportData={exQuestion}
             clickFunc={() => report(exQuestion.title)}
+            style={styles}
           />
         </>
       )
@@ -119,6 +127,7 @@ const Interview = () => {
             type="report"
             reportData={exQuestion}
             clickFunc={() => report(exQuestion.title)}
+            style={styles}
           />
         </>
       )

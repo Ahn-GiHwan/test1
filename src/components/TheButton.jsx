@@ -2,14 +2,11 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import { Button } from 'reactstrap'
 
-const TheButton = ({ text, color, type, outline, block, clickFunc }) => {
-  const styles = {
-    reportBtn: { position: 'fixed', bottom: 20, right: 20 }
-  }
+const TheButton = ({ text, color, type, outline, block, clickFunc, style }) => {
   return type === 'report' ? (
     <Button
       color="danger"
-      style={styles.reportBtn}
+      style={style}
       // class={type ='report' && 'report'}
       outline={outline}
       block={block}
