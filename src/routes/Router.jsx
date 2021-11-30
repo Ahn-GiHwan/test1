@@ -1,5 +1,5 @@
 import React from 'react'
-import { BrowserRouter, Routes, Route, NavLink, Link } from 'react-router-dom'
+import { BrowserRouter, Routes, Route, Link } from 'react-router-dom'
 
 import Home from './Home'
 import AddQuestion from './AddQuestion'
@@ -12,18 +12,17 @@ import Interview from './Interview'
 const Router = () => {
   return (
     <BrowserRouter>
-      <Link to="/categories" component={<Categories />}>
-        테스트하기
+      <Link to="/" component={<Home />}>
+        Home
       </Link>
-      <NavLink to="/result">답안보기</NavLink>
-      <Routes>       
+      <Routes>
         <Route path="/" element={<Home title="면접 도우미" />} />
-        <Route path="/AddQuestion" element={<AddQuestion />} />
+        <Route path="/question/add" element={<AddQuestion />} />
         <Route path="/categories" element={<Categories />} />
         <Route path="/categories/:id" element={<Category />} />
         <Route path="/interview" element={<Interview />} />
-        <Route path="/result" element={<ResultCheck />} />
-        <Route path="/detail/:id" element={<QuestionDetail />} />
+        <Route path="/question/answer" element={<ResultCheck />} />
+        <Route path="/question/detail/:id" element={<QuestionDetail />} />
       </Routes>
     </BrowserRouter>
   )

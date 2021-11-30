@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import { Container, Input, Row, Col, Label, Button } from 'reactstrap'
+import { Container, Input, Row, Col, Button } from 'reactstrap'
 import '../scss/components/Categories.scss'
 
 import CategoryCard from '../components/CategoryCard'
@@ -65,7 +65,7 @@ const Categories = props => {
 
   const toggleInputForm = () => setMode(!mode)
 
-  const careerTags = fetchCareerTagData.map((tag, idx) => (
+  const careerTagsView = fetchCareerTagData.map((tag, idx) => (
     <Button
       key={idx}
       color={tag.color}
@@ -100,7 +100,7 @@ const Categories = props => {
         </Row>
         <section>
           <span className="main-section_title">Career</span>
-          <div className="career-wrapper">{careerTags}</div>
+          <div className="career-wrapper">{careerTagsView}</div>
         </section>
         <Row>
           <span className="main-section_title">Category</span>

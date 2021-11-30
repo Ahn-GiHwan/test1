@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from 'react'
-import { useDispatch } from 'react-redux'
 import { useParams } from 'react-router'
 import { useNavigate } from 'react-router-dom'
 import { Alert } from 'reactstrap'
@@ -50,7 +49,7 @@ const Interview = () => {
     if (ATime === 11) return
     if (ATime === 0) {
       //문제 푼 후 페이지 이동
-      // navigate('/App')
+      navigate('/question/answer')
     } else {
       setTimeout(() => {
         setATime(ATime => ATime - 1)
