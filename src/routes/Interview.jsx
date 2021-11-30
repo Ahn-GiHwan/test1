@@ -6,6 +6,7 @@ import Swal from 'sweetalert2'
 import InterviewTemplate from '../components/Interview/InterviewTemplate'
 import TheButton from '../components/TheButton'
 import speech from '../utils/speech'
+import report from '../utils/report'
 
 const Interview = () => {
   const [QTimer, setQTimer] = useState(false)
@@ -64,30 +65,6 @@ const Interview = () => {
       speech(exQuestion.title, () => {
         setQTime(QTime => QTime - 1)
       })
-    },
-    reportClick: QData => {
-      Swal.fire({
-        title: '문제 오류 신고',
-        inputLabel: `"${QData.title}"에 대한 문제`,
-        input: 'textarea',
-        icon: 'info',
-        inputAttributes: {
-          autocapitalize: 'on'
-        },
-        showCancelButton: true,
-        confirmButtonText: '신고하기',
-        confirmButtonColor: 'red',
-        inputValidator: value => {
-          if (!value) {
-            return '내용을 입력해 주세요'
-          }
-        }
-      }).then(({ isConfirmed, value }) => {
-        if (isConfirmed) {
-          // 전송하기 클릭 시 dispatch로 데이터 보내기
-          Swal.fire(value)
-        }
-      })
     }
   }
 
@@ -127,7 +104,7 @@ const Interview = () => {
             text="문제 오류 신고"
             type="report"
             reportData={exQuestion}
-            clickFunc={() => clickEvents.reportClick(exQuestion)}
+            clickFunc={() => report(exQuestion.title)}
           />
         </>
       )
@@ -141,7 +118,7 @@ const Interview = () => {
             text="문제 오류 신고"
             type="report"
             reportData={exQuestion}
-            clickFunc={() => clickEvents.reportClick(exQuestion)}
+            clickFunc={() => report(exQuestion.title)}
           />
         </>
       )
