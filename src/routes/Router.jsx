@@ -8,10 +8,12 @@ import Category from './Category'
 import ResultCheck from './ResultCheck'
 import QuestionDetail from './QuestionDetail'
 import Interview from './Interview'
+import TheHeader from '../components/TheHeader'
 
 const Router = () => {
   return (
     <BrowserRouter>
+      <TheHeader />
       <Link to="/" component={<Home />}>
         Home
       </Link>
