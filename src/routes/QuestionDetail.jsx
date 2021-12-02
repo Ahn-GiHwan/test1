@@ -77,11 +77,12 @@ const QuestionDetail = () => {
                 </Button>
                 <TheButton
                   style={{ position: 'relative', bottom: 0, right: 0 }}
-                  text="문제 오류 신고"
                   type="report"
                   reportData={selectedQNA.question}
                   clickFunc={() => report(selectedQNA.question)}
-                />
+                >
+                  문제 오류 신고
+                </TheButton>
               </ButtonGroup>
             </CardBody>
           </Card>

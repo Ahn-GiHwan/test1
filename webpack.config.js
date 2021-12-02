@@ -9,6 +9,7 @@ module.exports = (env, option) => {
     entry: './src/main.js',
     output: {
       filename: 'main.js',
+      publicPath: '/',
       clean: true
     },
     resolve: {
