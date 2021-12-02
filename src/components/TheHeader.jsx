@@ -40,7 +40,6 @@ const TheHeader = () => {
                 style={{
                   color: 'black',
                   textDecoration: 'none'
-                  // fontWeight: '900'
                 }}
               >
                 로그인
@@ -53,7 +52,6 @@ const TheHeader = () => {
                 style={{
                   color: 'black',
                   textDecoration: 'none'
-                  // fontWeight: '900'
                 }}
               >
                 회원가입
