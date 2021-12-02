@@ -85,11 +85,12 @@ const Interview = () => {
       ),
       subTitle: (
         <TheButton
-          children="시작"
           color="primary"
           onClick={clickEvents.startBtnClick}
           style={styles}
-        />
+        >
+          시작
+        </TheButton>
       ),
       notice: (
         <Alert fade={false}>
@@ -108,12 +109,13 @@ const Interview = () => {
         <>
           {QTime}
           <TheButton
-            children="문제 오류 신고"
             type="report"
             reportData={exQuestion}
             onClick={() => report(exQuestion.title)}
             style={styles}
-          />
+          >
+            문제 오류 신고
+          </TheButton>
         </>
       )
     },
@@ -123,12 +125,13 @@ const Interview = () => {
         <>
           {ATime}
           <TheButton
-            children="문제 오류 신고"
             type="report"
             reportData={exQuestion}
             onClick={() => report(exQuestion.title)}
             style={styles}
-          />
+          >
+            문제 오류 신고
+          </TheButton>
         </>
       )
     }
