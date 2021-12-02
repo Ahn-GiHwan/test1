@@ -1,10 +1,8 @@
-import React from 'react'
 import { Routes, Route, Link } from 'react-router-dom'
 import Categories from './Categories'
 import { Container, Button, Row } from 'reactstrap'
 import '../scss/components/Home.scss'
 import React, { useCallback } from 'react'
-import { Link } from 'react-router-dom'
 import TheButton from '../components/TheButton'
 import Login from './Login'
 
