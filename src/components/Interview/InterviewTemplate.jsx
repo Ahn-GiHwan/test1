@@ -3,11 +3,15 @@ import PropTypes from 'prop-types'
 import InterViewTitle from './InterViewTitle'
 import InterviewSubTitle from './InterviewSubTitle'
 
-const InterviewTemplate = ({ title, subTitle, notice }) => {
+const InterviewTemplate = ({ title, subTitle, notice, viewSelect }) => {
   return (
     <div style={styles.div}>
       <InterViewTitle title={title} />
-      <InterviewSubTitle subTitle={subTitle} notice={notice} />
+      <InterviewSubTitle
+        subTitle={subTitle}
+        notice={notice}
+        viewSelect={viewSelect}
+      />
     </div>
   )
 }
