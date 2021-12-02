@@ -35,7 +35,7 @@ const TheHeader = () => {
           <ListGroup flush>
             <ListGroupItem hover={{ color: 'red' }}>
               <NavLink
-                to="/user/login"
+                to="/users/login"
                 onClick={clickBtn}
                 style={{
                   color: 'black',
@@ -47,7 +47,7 @@ const TheHeader = () => {
             </ListGroupItem>
             <ListGroupItem>
               <NavLink
-                to="/user/signup"
+                to="/users/signup"
                 onClick={clickBtn}
                 style={{
                   color: 'black',
