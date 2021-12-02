@@ -9,7 +9,7 @@ const QuestionView = ({ qna }) => {
   const navigater = useNavigate()
 
   const goDetail = () => {
-    navigater(`/detail/${qna.id}`)
+    navigater(`/question/detail/${qna.id}`)
   }
 
   const sweetAlert = () => {
