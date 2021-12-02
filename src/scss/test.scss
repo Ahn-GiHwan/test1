@@ -3,11 +3,11 @@
 * {
   font-family: 'Spoqa Han Sans Neo', 'Spoqa Han Sans JP', sans-serif;
 }
-
+#root,
 body {
   width: 100vw;
   height: 100vh;
-  min-width: 500px;
+  min-width: 300px;
   overflow: hidden;
-  background-color: #fafafa !important;
+  background-color: #eee !important;
 }
