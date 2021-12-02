@@ -19,12 +19,12 @@ const TheHeader = () => {
       <Button color="" onClick={clickBtn} outline>
         {isOpen ? (
           <i
-            class="bx bx-menu-alt-right"
+            className="bx bx-menu-alt-right"
             style={{ fontSize: '30px', fontWeight: '900' }}
           ></i>
         ) : (
           <i
-            class="bx bx-menu"
+            className="bx bx-menu"
             style={{ fontSize: '30px', fontWeight: '900' }}
           ></i>
         )}
