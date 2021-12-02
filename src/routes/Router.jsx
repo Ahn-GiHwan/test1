@@ -10,6 +10,7 @@ import QuestionDetail from './QuestionDetail'
 import Interview from './Interview'
 import Login from './Login'
 import SignUp from './SignUp'
+import TheHeader from '../components/TheHeader'
 
 const Router = () => {
   const [isLogged, setIsLogged] = useState(false)
@@ -22,6 +23,7 @@ const Router = () => {
   )
   return (
     <BrowserRouter>
+      <TheHeader />
       <Link to="/" component={<Home />}>
         Home
       </Link>
