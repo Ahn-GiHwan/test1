@@ -1,12 +1,34 @@
 import React from 'react'
-import { Link } from 'react-router-dom'
+import { Routes, Route, Link } from 'react-router-dom'
+import Categories from './Categories'
+import { Container, Button, Row } from 'reactstrap'
+import '../scss/components/Home.scss'
 
 const Home = ({ title }) => {
   return (
-    <div className="wrap">
-      <h1>{title}</h1>
-      <Link to="/categories">면접 연습하기</Link>
-      <Link to="/question/add">내 질문 등록하기</Link>
+    <div>
+      <Container>
+        <Row className="header">
+          <div className="sign-wrapper">
+            <Link to="SignIn">로그인</Link>
+            <Link to="SignUp">회원가입</Link>
+          </div>
+          <h1>{title}</h1>
+        </Row>
+        <Row>
+          <div className="content">
+            <Link to="Home">
+              <div className="wrap">
+                <div className="test-button ">
+                  <h2 className="ring-button">면접대비 바로 시작해보기!</h2>
+                </div>
+              </div>
+            </Link>
+            {/* <Link to="AddQuestion">내 질문 등록하기</Link> */}
+            <Categories />
+          </div>
+        </Row>
+      </Container>
     </div>
   )
 }

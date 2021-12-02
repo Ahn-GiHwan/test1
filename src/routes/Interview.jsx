@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import { useParams } from 'react-router'
 import { useNavigate } from 'react-router-dom'
-import { Alert } from 'reactstrap'
+import { Alert, InputGroup, Button, Input } from 'reactstrap'
 import Swal from 'sweetalert2'
 import InterviewTemplate from '../components/Interview/InterviewTemplate'
 import TheButton from '../components/TheButton'
@@ -17,6 +17,12 @@ const Interview = () => {
 
   const [mode, setMode] = useState('ready')
 
+  const [selection, setSelection] = useState(null)
+
+  const selectTitle = () => {
+    setSelection()
+  }
+
   const navigate = useNavigate()
   // const dispatch = useDispatch()
   const { id } = useParams()
@@ -25,6 +31,7 @@ const Interview = () => {
     id: 0,
     title: 'react hook의 useEffect에 대해 설명하세요'
   }
+  const titleSelection = ['대답해 주세요 😃', '면접관 영상', exQuestion.title]
 
   const styles = {
     position: 'fixed',
@@ -118,7 +125,13 @@ const Interview = () => {
       )
     },
     answer: {
-      title: '대답해 주세요 😃',
+      title: (
+        <InputGroup>
+          <Input type="radio">기본</Input>
+          <Input type="radio">면접관</Input>
+          <Input type="radio">질문보기</Input>
+        </InputGroup>
+      ),
       subTitle: (
         <>
           {ATime}
