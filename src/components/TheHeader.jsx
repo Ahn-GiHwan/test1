@@ -9,13 +9,33 @@ import {
   OffcanvasHeader
 } from 'reactstrap'
 
+import Home from '../routes/Home'
+
 const TheHeader = () => {
   const [isOpen, setIsOpen] = useState(false)
   const clickBtn = () => {
     setIsOpen(isOpen => !isOpen)
   }
   return (
-    <div style={{ zIndex: '1', position: 'fixed', top: 0, right: 0 }}>
+    <div
+      style={{
+        display: 'flex',
+        justifyContent: 'space-between',
+        alignItems: 'center',
+        padding: '0 10px',
+        backgroundColor: '#fff'
+      }}
+    >
+      <Link
+        to="/"
+        component={<Home />}
+        style={{ color: 'black', textDecoration: 'none' }}
+      >
+        <i
+          className="bx bxs-home"
+          style={{ fontSize: '25px', fontWeight: '900' }}
+        ></i>
+      </Link>
       <Button color="" onClick={clickBtn} outline>
         {isOpen ? (
           <i
