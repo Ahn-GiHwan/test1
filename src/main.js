@@ -13,10 +13,8 @@ import './scss/test.scss'
 const rootEl = document.getElementById('root')
 
 ReactDOM.render(
-  <React.StrictMode>
-    <Provider store={store}>
-      <Router />
-    </Provider>
-  </React.StrictMode>,
+  <Provider store={store}>
+    <Router />
+  </Provider>,
   rootEl
 )

@@ -2,24 +2,35 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import { Button } from 'reactstrap'
 
-const TheButton = ({ text, color, type, outline, block, clickFunc }) => {
-  const styles = {
-    reportBtn: { position: 'fixed', bottom: 20, right: 20 }
-  }
+const TheButton = ({
+  children,
+  color,
+  type,
+  outline,
+  block,
+  onClick,
+  style
+}) => {
   return type === 'report' ? (
     <Button
       color="danger"
-      style={styles.reportBtn}
+      style={style}
       // class={type ='report' && 'report'}
       outline={outline}
       block={block}
-      onClick={clickFunc}
+      onClick={onClick}
     >
-      {text}
+      {children}
     </Button>
   ) : (
-    <Button color={color} outline={outline} block={block} onClick={clickFunc}>
-      {text}
+    <Button
+      style={style}
+      color={color}
+      outline={outline}
+      block={block}
+      onClick={onClick}
+    >
+      {children}
     </Button>
   )
 }
@@ -27,7 +38,6 @@ const TheButton = ({ text, color, type, outline, block, clickFunc }) => {
 export default TheButton
 
 TheButton.propTypes = {
-  text: PropTypes.string,
   color: PropTypes.oneOf([
     'primary',
     'secondary',
@@ -38,7 +48,7 @@ TheButton.propTypes = {
   type: PropTypes.oneOf(['report', 'click']),
   outline: PropTypes.bool,
   block: PropTypes.bool,
-  clickFunc: PropTypes.func
+  onClick: PropTypes.func
 }
 
 TheButton.defaultProps = {
