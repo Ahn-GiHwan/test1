@@ -24,9 +24,6 @@ const Router = () => {
   return (
     <BrowserRouter>
       <TheHeader />
-      <Link to="/" component={<Home />}>
-        Home
-      </Link>
       <Routes>
         <Route
           path="/"

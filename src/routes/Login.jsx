@@ -9,7 +9,7 @@ import {
 } from 'reactstrap'
 import TheButton from '../components/TheButton'
 import { useNavigate } from 'react-router'
-import '../scss/components/Login.scss'
+// import '../scss/components/Login.scss'
 import { Link } from 'react-router-dom'
 
 const Login = ({ isLogged, LoggedState }) => {
