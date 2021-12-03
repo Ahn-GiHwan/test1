@@ -1,9 +1,10 @@
 import React from 'react'
 import { Card, CardBody, CardSubtitle } from 'reactstrap'
 
-const InterviewSubTitle = ({ subTitle, notice }) => {
+const InterviewSubTitle = ({ viewSelect, subTitle, notice }) => {
   return (
     <>
+      {viewSelect}
       <Card>
         <CardBody>
           <CardSubtitle>{subTitle}</CardSubtitle>
