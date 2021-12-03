@@ -13,7 +13,9 @@ const Home = ({ title, isLogged, LoggedState }) => {
       <Link to="/categories">면접 연습하기</Link>
       <Link to="/question/add">내 질문 등록하기</Link>
       {isLogged ? (
-        <TheButton text="로그아웃" color="primary" onClick={onLogOut} />
+        <TheButton color="primary" onClick={onLogOut}>
+          로그아웃
+        </TheButton>
       ) : (
         <Link to="/users/login">로그인</Link>
       )}
