@@ -12,25 +12,15 @@ const Home = ({ title, isLogged, LoggedState }) => {
   }, [isLogged])
   return (
     <Container>
-      <Row className="header">
-        <div className="sign-wrapper">
-          <Link to="SignIn">로그인</Link>
-          <Link to="SignUp">회원가입</Link>
-        </div>
-        <h1>{title}</h1>
-      </Row>
+      <h1>{title}</h1>
       <Row>
         <div className="content">
           <Link to="Home">
-            <div className="wrap">
-              <div className="test-button ">
-                <h2 className="ring-button">면접대비 바로 시작해보기!</h2>
-              </div>
-            </div>
+            <button className="ring-button">면접대비 바로 시작해보기!</button>
           </Link>
           {/* <Link to="AddQuestion">내 질문 등록하기</Link> */}
-          <Categories />
         </div>
+        <Categories />
       </Row>
     </Container>
   )
