@@ -57,7 +57,7 @@ const Categories = props => {
       sm={6}
       xs={6}
       id={card.id}
-      onClickCapture={choiceMulitleCategories}
+      onClick={choiceMulitleCategories}
     >
       <CategoryCard card={card} id={card.id} />
     </Col>
