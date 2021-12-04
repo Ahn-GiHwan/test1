@@ -30,7 +30,16 @@
     // }
 
     .col-sm-6 {
-      a {
+      &.choice {
+        /*카테고리 선택시 배경색이 붉은 색으로 변함*/
+        .card {
+          .card-item {
+            background: #f57b51;
+          }
+        }
+      }
+
+      .card {
         display: block;
         margin-bottom: 1.5rem;
         text-decoration: none;

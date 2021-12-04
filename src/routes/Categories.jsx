@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useState, useCallback } from 'react'
 import { Container, Input, Row, Col, Button } from 'reactstrap'
 import '../scss/components/Categories.scss'
 
@@ -28,10 +28,38 @@ const Categories = props => {
     setData(fetchCategoryData)
   }, [])
 
+  //카데고리 중복 선택
+  const [choiceCategories, setChoiceCategories] = useState([]) //선택한 카데고리가 담긴 배열: 카데고리의 id가 들어있음.
+
+  const choiceMulitleCategories = useCallback(
+    e => {
+      const currentChoicedId = e.currentTarget.id
+      e.currentTarget.classList.toggle('choice')
+
+      if (choiceCategories.includes(currentChoicedId)) {
+        //이미 선택한 카데고리를 고르면 배열에서 삭제함 (토글 기능)
+        setChoiceCategories(prev => [
+          ...prev.filter(
+            el => el.toUpperCase() !== currentChoicedId.toUpperCase()
+          )
+        ])
+      } else {
+        setChoiceCategories(prev => [...prev, currentChoicedId])
+      }
+    },
+    [choiceCategories]
+  )
+
   // 카테고리 카드 생성 -> 컴포넌트로 나눌까 생각중
   const categories = data.map(card => (
-    <Col key={card.id} sm={6} xs={6}>
-      <CategoryCard card={card} />
+    <Col
+      key={card.id}
+      sm={6}
+      xs={6}
+      id={card.id}
+      onClickCapture={choiceMulitleCategories}
+    >
+      <CategoryCard card={card} id={card.id} />
     </Col>
   ))
 
