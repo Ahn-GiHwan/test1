@@ -21,7 +21,8 @@ export default InterviewTemplate
 InterviewTemplate.propTypes = {
   title: PropTypes.node || PropTypes.string,
   subTitle: PropTypes.node || PropTypes.string || PropTypes.number,
-  notice: PropTypes.node || PropTypes.bool
+  notice: PropTypes.node || PropTypes.bool,
+  viewSelect: PropTypes.node
 }
 
 InterviewTemplate.defaultProps = {
