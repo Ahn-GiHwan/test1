@@ -59,7 +59,7 @@ const Categories = props => {
       id={card.id}
       onClick={choiceMulitleCategories}
     >
-      <CategoryCard card={card} id={card.id} />
+      <CategoryCard card={card} />
     </Col>
   ))
 
