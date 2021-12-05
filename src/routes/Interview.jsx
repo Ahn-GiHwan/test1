@@ -135,7 +135,24 @@ const Interview = () => {
       ),
       subTitle: (
         <>
-          {ATime}
+          <div
+            style={{
+              display: 'flex',
+              flexDirection: 'column',
+              justifyContent: 'center',
+              alignItems: 'center'
+            }}
+          >
+            <span>{ATime}</span>
+            <TheButton
+              color="primary"
+              onClick={() => {
+                setATime(0)
+              }}
+            >
+              넘어가기
+            </TheButton>
+          </div>
           <TheButton
             type="report"
             reportData={exQuestion}
