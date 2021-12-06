@@ -15,10 +15,8 @@ const Categories = props => {
   )
   // 가변 데이터
   const [data, setData] = useState([])
-
   // tag data
   const fetchCareerTagData = useSelector(state => state.careerTagReducer.tags)
-
   // 검색어
   const [query, setQuery] = useState('')
   // search form on/off
@@ -27,15 +25,14 @@ const Categories = props => {
   // api에서 데이터 가져오기
   useEffect(() => {
     setData(fetchCategoryData)
-  }, [])
+  }, [fetchCategoryData])
 
   //카데고리 중복 선택
   const [choiceCategories, setChoiceCategories] = useState([]) //선택한 카데고리가 담긴 배열: 카데고리의 id가 들어있음.
-
   const choiceMulitleCategories = useCallback(
     e => {
-      const currentChoicedId = e.currentTarget.id
-      e.currentTarget.classList.toggle('choice')
+      const currentChoicedId = e.target.parentElement.parentElement.id
+      e.target.parentElement.parentElement.classList.toggle('choice')
 
       if (choiceCategories.includes(currentChoicedId)) {
         //이미 선택한 카데고리를 고르면 배열에서 삭제함 (토글 기능)
@@ -80,49 +77,51 @@ const Categories = props => {
   }
 
   // 카테고리 카드 생성 -> 컴포넌트로 나눌까 생각중
-  const categories = data.map(card => (
-    <Col
-      key={card.id}
-      sm={6}
-      xs={6}
-      id={card.id}
-      count={card.count}
-      onClick={choiceMulitleCategories}
-    >
-      <CategoryCard card={card} />
-    </Col>
-  ))
+  const categories =
+    data &&
+    data.map(card => (
+      <Col key={card.id} md={4} sm={6} xs={12} id={card.id}>
+        <CategoryCard
+          card={card}
+          choiceMulitleCategories={choiceMulitleCategories}
+        />
+      </Col>
+    ))
 
   // 검색어 세팅
-  const onChange = e => {
+  const onChange = useCallback(e => {
     setQuery(e.target.value)
-  }
-
+  }, [])
   // 초기 fetchData 불러오기
-  const reset = () => {
+  const reset = useCallback(() => {
     setData(fetchCategoryData)
-  }
-
-  const onKeyUp = e => {
-    const enter = 13
-    // 검색어가 없을 때, 모든 카테고리 보여주기
-    if (!e.target.value.length) reset()
-    // enter 입력 시, 해당 카테고리 보여주기
-    if (e.keyCode === enter) {
-      const filters = [...fetchCategoryData].filter(
-        el => el.title.toUpperCase() === query.toUpperCase().trim()
-      )
-      setData(filters)
-    }
-  }
-
-  const selectTag = text => {
+  }, [])
+  const onKeyUp = useCallback(
+    e => {
+      const enter = 13
+      // 검색어가 없을 때, 모든 카테고리 보여주기
+      if (!e.target.value.length) reset()
+      // enter 입력 시, 해당 카테고리 보여주기
+      if (e.keyCode === enter) {
+        if (!e.target.value.length) return
+        const filters = [...fetchCategoryData].filter(el => {
+          const pattern = `^${query}`
+          const regex = new RegExp(pattern, 'gi')
+          return (
+            el.title.match(regex)?.join('').toUpperCase() ===
+            query.toUpperCase().trim()
+          )
+        })
+        setData(filters)
+      }
+    },
+    [query]
+  )
+  const selectTag = useCallback(text => {
     const tags = [...fetchCategoryData].filter(tag => tag.tag.includes(text))
     setData(tags)
-  }
-
+  }, [])
   const toggleInputForm = () => setMode(!mode)
-
   const careerTagsView = fetchCareerTagData.map((tag, idx) => (
     <Button
       key={idx}
@@ -148,7 +147,12 @@ const Categories = props => {
           ) : (
             <>
               <Col xs={7} sm={7}>
-                <Input onKeyUp={onKeyUp} onChange={onChange} value={query} />
+                <Input
+                  onKeyUp={onKeyUp}
+                  onChange={onChange}
+                  value={query}
+                  style={{ margin: '20px 0' }}
+                />
               </Col>
               <Col xs={2}>
                 <SearchButton onClick={toggleInputForm} />

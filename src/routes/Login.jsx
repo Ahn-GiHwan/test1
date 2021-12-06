@@ -9,8 +9,7 @@ import {
 } from 'reactstrap'
 import TheButton from '../components/TheButton'
 import { useNavigate } from 'react-router'
-// import '../scss/components/Login.scss'
-
+import '../scss/components/Login.scss'
 import { Link } from 'react-router-dom'
 
 const Login = ({ isLogged, LoggedState }) => {
@@ -47,7 +46,8 @@ const Login = ({ isLogged, LoggedState }) => {
     position: 'absolute',
     top: '50%',
     left: '50%',
-    transform: 'translate(-50%, -50%)'
+    transform: 'translate(-50%, -50%)',
+    maxWidth: '560px'
   }))
 
   const onSubmitLogin = useCallback(
@@ -101,24 +101,31 @@ const Login = ({ isLogged, LoggedState }) => {
           />
         </FormGroup>
         <TheButton
+          block
           children="로그인"
-          block
           color="primary"
-          style={{ marginBottom: '10px' }}
-        />
-        <TheButton
-          children={
-            <Link
-              to="/users/signup"
-              style={{ textDecoration: 'none', color: '#fff' }}
-            >
-              회원가입
-            </Link>
-          }
-          block
-          color="success"
+          style={{ marginBottom: '20px' }}
         />
       </Form>
+      <TheButton
+        style={{ padding: 0 }}
+        block
+        children={
+          <Link
+            to="/users/signup"
+            style={{
+              display: 'block',
+              width: '100%',
+              textDecoration: 'none',
+              color: '#fff',
+              padding: '6px 12px'
+            }}
+          >
+            회원가입
+          </Link>
+        }
+        color="success"
+      />
     </Container>
 
     // <Container>
