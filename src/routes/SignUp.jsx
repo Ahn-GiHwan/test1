@@ -1,4 +1,5 @@
 import React, { useMemo } from 'react'
+import { Link } from 'react-router-dom'
 import {
   Container,
   Form,
@@ -71,7 +72,18 @@ const SignUp = () => {
             placeholder="********"
           />
         </FormGroup>
-        <TheButton children="회원가입" block />
+        <TheButton children="회원가입" block color="primary" />
+        <Link
+          to="/users/login"
+          style={{
+            display: 'block',
+            margin: '20px auto',
+            textAlign: 'center',
+            fontSize: '16px'
+          }}
+        >
+          로그인 하시겠습니까?
+        </Link>
       </Form>
     </Container>
   )
