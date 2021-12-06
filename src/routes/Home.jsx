@@ -1,5 +1,8 @@
+import { Routes, Route, Link } from 'react-router-dom'
+import Categories from './Categories'
+import { Container, Button, Row } from 'reactstrap'
+import '../scss/components/Home.scss'
 import React, { useCallback } from 'react'
-import { Link } from 'react-router-dom'
 import TheButton from '../components/TheButton'
 import Login from './Login'
 
@@ -8,19 +11,18 @@ const Home = ({ title, isLogged, LoggedState }) => {
     LoggedState(false)
   }, [isLogged])
   return (
-    <div className="wrap">
+    <Container>
       <h1>{title}</h1>
-      <Link to="/categories">면접 연습하기</Link>
-      <Link to="/question/add">내 질문 등록하기</Link>
-      {isLogged ? (
-        <TheButton color="primary" onClick={onLogOut}>
-          로그아웃
-        </TheButton>
-      ) : (
-        <Link to="/users/login">로그인</Link>
-      )}
-      <Link to="/users/signup">회원가입</Link>
-    </div>
+      <Row>
+        <div className="content">
+          <Link to="Home">
+            <button className="ring-button">면접대비 바로 시작해보기!</button>
+          </Link>
+          {/* <Link to="AddQuestion">내 질문 등록하기</Link> */}
+        </div>
+        <Categories />
+      </Row>
+    </Container>
   )
 }
 

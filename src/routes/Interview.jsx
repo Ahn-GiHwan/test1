@@ -1,7 +1,7 @@
-import React, { useEffect, useState } from 'react'
+import React, { useCallback, useEffect, useState } from 'react'
 import { useParams } from 'react-router'
 import { useNavigate } from 'react-router-dom'
-import { Alert } from 'reactstrap'
+import { Alert, ButtonGroup, Button } from 'reactstrap'
 import Swal from 'sweetalert2'
 import InterviewTemplate from '../components/Interview/InterviewTemplate'
 import TheButton from '../components/TheButton'
@@ -16,6 +16,12 @@ const Interview = () => {
   const [ATime, setATime] = useState(11)
 
   const [mode, setMode] = useState('ready')
+
+  const [selection, setSelection] = useState('default')
+
+  const selectTitle = e => {
+    setSelection(e.target.id)
+  }
 
   const navigate = useNavigate()
   // const dispatch = useDispatch()
@@ -87,7 +93,7 @@ const Interview = () => {
         <TheButton
           color="primary"
           onClick={clickEvents.startBtnClick}
-          style={styles}
+          // style={styles}
         >
           시작
         </TheButton>
@@ -120,10 +126,33 @@ const Interview = () => {
       )
     },
     answer: {
-      title: '대답해 주세요 😃',
+      title: (
+        <span>
+          {selection === 'default' && '대답 해주세요 😀'}
+          {selection === 'interviewer' && '면접관 영상'}
+          {selection === 'question' && exQuestion.title}
+        </span>
+      ),
       subTitle: (
         <>
-          {ATime}
+          <div
+            style={{
+              display: 'flex',
+              flexDirection: 'column',
+              justifyContent: 'center',
+              alignItems: 'center'
+            }}
+          >
+            <span>{ATime}</span>
+            <TheButton
+              color="primary"
+              onClick={() => {
+                setATime(0)
+              }}
+            >
+              넘어가기
+            </TheButton>
+          </div>
           <TheButton
             type="report"
             reportData={exQuestion}
@@ -132,6 +161,25 @@ const Interview = () => {
           >
             문제 오류 신고
           </TheButton>
+        </>
+      ),
+      viewSelect: (
+        <>
+          <ButtonGroup>
+            <Button onClick={selectTitle} id="default">
+              기본
+            </Button>
+            <Button
+              onClick={selectTitle}
+              name="title-selection"
+              id="interviewer"
+            >
+              면접관
+            </Button>
+            <Button onClick={selectTitle} name="title-selection" id="question">
+              질문
+            </Button>
+          </ButtonGroup>
         </>
       )
     }
@@ -157,7 +205,11 @@ const Interview = () => {
       )
     case 'answer':
       return (
-        <InterviewTemplate title={answer.title} subTitle={answer.subTitle} />
+        <InterviewTemplate
+          title={answer.title}
+          subTitle={answer.subTitle}
+          viewSelect={answer.viewSelect}
+        />
       )
     default:
       return Swal.fire({ title: '잘못된 접근입니다. ', icon: 'error' })
