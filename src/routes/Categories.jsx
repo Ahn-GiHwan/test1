@@ -1,5 +1,6 @@
 import React, { useEffect, useState, useCallback } from 'react'
 import { Container, Input, Row, Col, Button } from 'reactstrap'
+import Swal from 'sweetalert2'
 import '../scss/components/Categories.scss'
 
 import CategoryCard from '../components/CategoryCard'
@@ -47,6 +48,34 @@ const Categories = props => {
     [choiceCategories]
   )
 
+  //풀 문제 개수 설정
+  const settingNumberQuestions = () => {
+    let totalQuestion = 0
+    // console.log(categories[0].props.children.props.card.count)
+    for (let i = 0; i <= choiceCategories.length - 1; i++) {
+      totalQuestion +=
+        categories[choiceCategories[i]].props.children.props.card.count
+    }
+    console.log(totalQuestion)
+    //console.log(categories)
+    Swal.fire({
+      title: `선택하신 카테고리 문제는 모두 ${totalQuestion} 문제 입니다. 풀 문제 개수를 지정해주세요.`,
+      input: 'number',
+      inputPlaceholder: 'ex. 5',
+      inputAttributes: {
+        autocapitalize: 'off'
+      },
+      showCancelButton: true,
+      confirmButtonText: 'Go!',
+      showLoaderOnConfirm: true,
+      preConfirm: '',
+      allowOutsideClick: () => !Swal.isLoading()
+    }).then(result => {
+      if (result.isConfirmed) {
+      }
+    })
+  }
+
   // 카테고리 카드 생성 -> 컴포넌트로 나눌까 생각중
   const categories =
     data &&
@@ -58,6 +87,7 @@ const Categories = props => {
         />
       </Col>
     ))
+
   // 검색어 세팅
   const onChange = useCallback(e => {
     setQuery(e.target.value)
@@ -136,6 +166,8 @@ const Categories = props => {
         </section>
         <Row>
           <span className="main-section_title">Category</span>
+          <div>내가 선택한 카테고리 : {choiceCategories.join(', ')}</div>
+          <Button onClick={settingNumberQuestions}> 시작 </Button>
           {categories}
         </Row>
       </Container>
