@@ -1,13 +1,25 @@
 import { combineReducers } from 'redux'
 
-import categoryReducer from './categoryReducer'
-import careerTagReducer from './CareerTagReducer'
-import testResultReducer from './testResultReducer'
+import career from './career'
+import collection from './collection'
+import post from './post'
+import postCategory from './postCategory'
+import report from './report'
+import reportCategory from './reportCategory'
+import test from './test'
+import testCategory from './testCategory'
+import user from './user'
 
 const rootReducer = combineReducers({
-  categoryReducer,
-  careerTagReducer,
-  testResultReducer
+  career,
+  collection,
+  post,
+  postCategory,
+  report,
+  reportCategory,
+  test,
+  testCategory,
+  user
 })
 
 export default rootReducer
