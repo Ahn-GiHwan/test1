@@ -22,30 +22,30 @@ const TheHeader = () => {
         display: 'flex',
         justifyContent: 'space-between',
         alignItems: 'center',
+        height: '50px',
         padding: '0 10px',
         backgroundColor: '#fff'
       }}
     >
-      <Link
-        to="/"
-        component={<Home />}
-        style={{ color: 'black', textDecoration: 'none' }}
+      <Button
+        color=""
+        onClick={clickBtn}
+        outline
+        style={{
+          display: 'flex',
+          justifyContent: 'center',
+          alignItems: 'center'
+        }}
       >
-        <i
-          className="bx bxs-home"
-          style={{ fontSize: '25px', fontWeight: '900' }}
-        ></i>
-      </Link>
-      <Button color="" onClick={clickBtn} outline>
         {isOpen ? (
           <i
             className="bx bx-menu-alt-right"
-            style={{ fontSize: '30px', fontWeight: '900' }}
+            style={{ fontSize: '24px', fontWeight: '900' }}
           ></i>
         ) : (
           <i
             className="bx bx-menu"
-            style={{ fontSize: '30px', fontWeight: '900' }}
+            style={{ fontSize: '24px', fontWeight: '900' }}
           ></i>
         )}
       </Button>
@@ -101,6 +101,18 @@ const TheHeader = () => {
           </ListGroup>
         </OffcanvasBody>
       </Offcanvas>
+
+      <div style={{ display: 'flex', alignItems: 'center' }}>
+        <i
+          className="bx bx-medal"
+          style={{ fontSize: '16px', fontWeight: '100', color: '#007866' }}
+        ></i>
+        <strong
+          style={{ fontSize: '14px', fontWeight: '400', margin: '0 10px' }}
+        >
+          Aiki
+        </strong>
+      </div>
     </div>
   )
 }
