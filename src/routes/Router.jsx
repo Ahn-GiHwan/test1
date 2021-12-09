@@ -11,6 +11,9 @@ import Interview from './Interview'
 import Login from './Login'
 import SignUp from './SignUp'
 import TheHeader from '../components/TheHeader'
+import TheFooter from '../components/TheFooter'
+import Profile from './Profile'
+import Setting from './Setting'
 
 const Router = () => {
   const [isLogged, setIsLogged] = useState(false)
@@ -27,13 +30,7 @@ const Router = () => {
       <Routes>
         <Route
           path="/"
-          element={
-            <Home
-              title="면접 도우미"
-              isLogged={isLogged}
-              LoggedState={LoggedState}
-            />
-          }
+          element={<Home isLogged={isLogged} LoggedState={LoggedState} />}
         />
         <Route path="/question/add" element={<AddQuestion />} />
         <Route path="/categories" element={<Categories />} />
@@ -41,12 +38,15 @@ const Router = () => {
         <Route path="/interview" element={<Interview />} />
         <Route path="/question/answer" element={<ResultCheck />} />
         <Route path="/question/detail/:id" element={<QuestionDetail />} />
+        <Route path="/users" element={<Profile />} />
         <Route
           path="/users/login"
           element={<Login isLogged={isLogged} LoggedState={LoggedState} />}
         />
         <Route path="/users/signup" element={<SignUp />}></Route>
+        <Route path="/config" element={<Setting />} />
       </Routes>
+      <TheFooter />
     </BrowserRouter>
   )
 }

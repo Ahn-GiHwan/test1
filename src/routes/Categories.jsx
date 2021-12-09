@@ -16,7 +16,7 @@ const Categories = props => {
   // 가변 데이터
   const [data, setData] = useState([])
   // tag data
-  const fetchCareerTagData = useSelector(state => state.careerTagReducer.tags)
+  const fetchCareerTagData = useSelector(state => state.career.careers)
   // 검색어
   const [query, setQuery] = useState('')
   // search form on/off
@@ -125,11 +125,10 @@ const Categories = props => {
   const careerTagsView = fetchCareerTagData.map((tag, idx) => (
     <Button
       key={idx}
-      color={tag.color}
       className="career-card"
       onClick={e => selectTag(e.target.textContent)}
     >
-      {tag.title}
+      {tag.careerTitle}
     </Button>
   ))
 

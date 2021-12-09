@@ -1,5 +1,6 @@
+import produce from 'immer'
 export const initialState = {
-  careers = []
+  careers: []
 }
 
 const careerDummy = {
@@ -7,8 +8,8 @@ const careerDummy = {
   careerTitle: '직업군 이름'
 }
 
-const reducer = (state = initialState,action) => {
-  return produce(state, (draft) => {
+const reducer = (state = initialState, action) => {
+  return produce(state, draft => {
     switch (action.type) {
       default:
         return draft
