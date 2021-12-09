@@ -1,5 +1,6 @@
+import produce from 'immer'
 const initialState = {
-    tests = []
+  tests: []
 }
 
 const testDummy = {
@@ -12,10 +13,10 @@ const testDummy = {
   answer: '답안'
 }
 
-const reducer = (state = initialState,action) => {
-  return produce(state, (draft) => {
+const reducer = (state = initialState, action) => {
+  return produce(state, draft => {
     switch (action.type) {
-    	default:
+      default:
         return draft
     }
   })
