@@ -9,6 +9,7 @@ import reportCategory from './reportCategory'
 import test from './test'
 import testCategory from './testCategory'
 import user from './user'
+import categoryReducer from './categoryReducer'
 
 const rootReducer = combineReducers({
   career,
@@ -19,7 +20,8 @@ const rootReducer = combineReducers({
   reportCategory,
   test,
   testCategory,
-  user
+  user,
+  categoryReducer
 })
 
 export default rootReducer
